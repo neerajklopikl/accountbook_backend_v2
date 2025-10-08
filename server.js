@@ -22,6 +22,12 @@ app.use('/api/invoices', require('./routes/invoices'));
 app.use('/api/quotations', require('./routes/quotations'));
 app.use('/api/purchases', require('./routes/purchases'));
 app.use('/api/expenses', require('./routes/expenses'));
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/invoices', require('./routes/invoices'));
+app.use('/api/customers', require('./routes/customers'));
+app.use('/api/items', require('./routes/items'));
+app.use('/api/companies', require('./routes/companies'));
+
 
 // Start the server
 app.listen(PORT, () => {

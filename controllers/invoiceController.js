@@ -4,7 +4,18 @@ const Invoice = require('../models/Invoice');
 // @desc    Create an invoice
 // @access  Private
 exports.createInvoice = async (req, res) => {
-    const { invoiceNumber, customerName, items, totalAmount, isPaid } = req.body;
+    const {
+        invoiceNumber,
+        customerName,
+        items,
+        totalAmount,
+        isPaid,
+        transportDetails,
+        additionalFields,
+        otherDetails,
+        bankDetails,
+        termsAndConditions
+    } = req.body;
 
     try {
         const newInvoice = new Invoice({
@@ -13,11 +24,16 @@ exports.createInvoice = async (req, res) => {
             customerName,
             items,
             totalAmount,
-            isPaid
+            isPaid,
+            transportDetails,
+            additionalFields,
+            otherDetails,
+            bankDetails,
+            termsAndConditions
         });
 
         const invoice = await newInvoice.save();
-        res.json(invoice);
+        res.status(201).json(invoice);
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
